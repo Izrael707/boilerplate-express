@@ -1,9 +1,11 @@
 let express = require("express");
 let app = express();
 
-const staticPath = __dirname + "/public"
+require("dotenv").config();
+
+const staticPath = __dirname + "/public";
 // LESSON THREE
-app.use("/public", express.static(staticPath))
+app.use("/public", express.static(staticPath));
 
 // LESSON ONE
 // app.get("/", function (req, res) {
@@ -17,9 +19,12 @@ app.get("/", function (req, res) {
 });
 
 // LESSON FOUR
-app.get("/json",function(req,res){
-  const response = {"message":"Hello json"}
-  res.json(response)
-})
+app.get("/json", function (req, res) {
+	const response =
+		process.env.MESSAGE_STYLE === "uppercase"
+			? { message: "HELLO JSON" }
+			: { message: "Hello json" };
+	res.json(response);
+});
 
 module.exports = app;
