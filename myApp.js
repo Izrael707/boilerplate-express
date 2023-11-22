@@ -20,10 +20,10 @@ app.get("/", function (req, res) {
 
 // LESSON FOUR
 app.get("/json", function (req, res) {
-	const response =
-		process.env.MESSAGE_STYLE === "uppercase"
-			? { message: "HELLO JSON" }
-			: { message: "Hello json" };
+	const response = {
+		message:
+			process.env.MESSAGE_STYLE === "uppercase" ? "HELLO JSON" : "Hello json",
+	};
 	res.json(response);
 });
 
