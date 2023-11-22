@@ -20,11 +20,11 @@ app.get("/", function (req, res) {
 
 // LESSON FOUR
 app.get("/json", function (req, res) {
-	messageStyle = process.env.MESSAGE_STYLE;
-	if (messageStyle === "uppercase") {
-		res.send({ message: "HELLO JSON" });
+  let response = "Hello json"
+	if (process.env.MESSAGE_STYLE === "uppercase") {
+		res.send({ message: response.toLocaleUpperCase() });
 	} else {
-		res.send({ message: "Hello json" });
+		res.send({ message: response });
 	}
 });
 
