@@ -1,7 +1,7 @@
-require("dotenv").config();
-
 let express = require("express");
 let app = express();
+
+require("dotenv").config();
 
 const staticPath = __dirname + "/public";
 // LESSON THREE
