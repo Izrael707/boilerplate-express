@@ -16,4 +16,10 @@ app.get("/", function (req, res) {
 	res.sendFile(filePath);
 });
 
+// LESSON FOUR
+app.get("/json",function(req,res){
+  const response = {"message":"Hello json"}
+  res.json(response)
+})
+
 module.exports = app;
