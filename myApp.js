@@ -1,6 +1,5 @@
 let express = require("express");
 let app = express();
-
 require("dotenv").config();
 
 const staticPath = __dirname + "/public";
@@ -20,16 +19,13 @@ app.get("/", function (req, res) {
 
 // LESSON FOUR
 app.get("/json", function (req, res) {
-	let response = {
-		message: "",
-	};
-
+	let str = "";
 	if (process.env.MESSAGE_STYLE === "uppercase") {
-		response.message = "Hello json".toUpperCase();
+		str = "Hello json".toUpperCase();
 	} else if (process.env.MESSAGE_STYLE !== "uppercase") {
-    response.message = "Hello json"
-  }
-	res.json(response)
+		str = "Hello json";
+	}
+	res.json({ message: str });
 });
 
 module.exports = app;
