@@ -19,13 +19,11 @@ app.get("/", function (req, res) {
 
 // LESSON FOUR
 app.get("/json", function (req, res) {
-	let str = "";
-	if (process.env.MESSAGE_STYLE === "uppercase") {
-		str = "Hello json".toUpperCase();
-	} else if (process.env.MESSAGE_STYLE !== "uppercase") {
-		str = "Hello json";
-	}
-	res.json({ message: str });
+	const text = "Hello json";
+	res.json({
+		message:
+			process.env.MESSAGE_STYLE === "uppercase" ? text.toUpperCase() : text,
+	});
 });
 
 module.exports = app;
