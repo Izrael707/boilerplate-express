@@ -4,11 +4,10 @@ let app = express();
 
 const staticPath = __dirname + "/public";
 
-
-app.use(function (req,res,next) {
-  console.log(`${req.method} ${req.path} - ${req.ip}`);
-  next()
-})
+app.use(function (req, res, next) {
+	console.log(`${req.method} ${req.path} - ${req.ip}`);
+	next();
+});
 // LESSON THREE
 app.use("/public", express.static(staticPath));
 
@@ -32,5 +31,16 @@ app.get("/json", function (req, res) {
 				: "Hello json",
 	});
 });
+
+app.get(
+	"/now",
+	function (req, res, next) {
+		req.time = new Date().toString();
+    next()
+	},
+	function (req, res) {
+		res.json({ time: req.time });
+	}
+);
 
 module.exports = app;
