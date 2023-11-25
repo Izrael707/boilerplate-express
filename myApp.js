@@ -3,6 +3,12 @@ let express = require("express");
 let app = express();
 
 const staticPath = __dirname + "/public";
+
+
+app.use(function (req,res,next) {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  next()
+})
 // LESSON THREE
 app.use("/public", express.static(staticPath));
 
