@@ -1,10 +1,9 @@
 require("dotenv").config();
 let express = require("express");
 let app = express();
-let bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended:false}))
+let bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
 const staticPath = __dirname + "/public";
-
 
 app.use(function (req, res, next) {
 	console.log(`${req.method} ${req.path} - ${req.ip}`);
@@ -26,13 +25,12 @@ app.get("/", function (req, res) {
 
 // LESSON FOUR
 app.get("/json", function (req, res) {
-	let messageStyle = process.env.MESSAGE_STYLE
-  if (messageStyle = "uppercase"){
-    res.json({"message": `Hello json`.toUpperCase()})
-  } else {
-    res.json({"message": `Hello json`})
-  }
-  
+	let message = "Hello json";
+	if (process.env.MESSAGE_STYLE === "uppercase") {
+		res.json({ message: message.toUpperCase() });
+	} else {
+		res.json({ message });
+	}
 });
 
 app.get("/:word/echo", function (req, res) {
@@ -44,9 +42,9 @@ app.get("/name", function (req, res) {
 });
 
 app.post("/name", function (req, res) {
-  const {first, last} = req.body
-  res.json({name: `${first} ${last}`});
-})
+	const { first, last } = req.body;
+	res.json({ name: `${first} ${last}` });
+});
 
 app.get(
 	"/now",
