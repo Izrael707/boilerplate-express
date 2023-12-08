@@ -26,12 +26,10 @@ app.get("/", function (req, res) {
 
 // LESSON FOUR
 app.get("/json", function (req, res) {
-	res.json({
-		message:
-			process.env.MESSAGE_STYLE === "uppercase"
-				? "Hello json".toUpperCase()
-				: "Hello json",
-	});
+	const messageStyle = process.env.MESSAGE_STYLE
+  const message = "Hello json"
+  console.log(messageStyle);
+  res.json({message: messageStyle === "uppercase" ? message.toUpperCase() : message })
 });
 
 app.get("/:word/echo", function (req, res) {
