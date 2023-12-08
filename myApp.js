@@ -42,6 +42,11 @@ app.get("/name", function (req, res) {
 	res.json({ name: `${req.query.first} ${req.query.last}` });
 });
 
+app.post("/name", function (req, res) {
+  const {first, last} = req.body
+  res.json({name: `${first} ${last}`});
+})
+
 app.get(
 	"/now",
 	function (req, res, next) {
